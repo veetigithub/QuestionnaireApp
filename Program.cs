@@ -1,7 +1,14 @@
+using QuestionnaireApp.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Add MongoDB connection
+builder.Services.AddSingleton<DatabaseConnection>();
+builder.Services.AddSingleton<Register>();
+
 
 var app = builder.Build();
 
