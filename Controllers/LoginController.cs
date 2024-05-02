@@ -33,7 +33,10 @@ namespace QuestionnaireApp.Controllers
                 Console.WriteLine("kirjautui sisään");
                 return RedirectToAction("Index");
             }
-
+            else
+            {
+                Console.WriteLine("ei kirjautunut");
+            }
             // Invalid username or password, return to login page with error
             ModelState.AddModelError(string.Empty, "Invalid username or password.");
             return View(model);
@@ -43,13 +46,15 @@ namespace QuestionnaireApp.Controllers
         {
 
             // Query the database for a document with the provided username
-            var usersCollection = _connection.GetCollection<User>("Registration");
+            var usersCollection = _connection.GetCollection<User>("User");
             var filter = Builders<User>.Filter.Eq(u => u.Username, username);
             var user = usersCollection.Find(filter).FirstOrDefault();
 
             // If no user found with the provided username, return false
             if (user == null)
             {
+                Console.WriteLine(username);
+                Console.WriteLine("nulli user");
                 return false;
             }
 
@@ -84,6 +89,13 @@ namespace QuestionnaireApp.Controllers
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity),
                 authProperties);
+        }
+
+        public IActionResult Logout()
+        {
+            if (User.Identity.IsAuthenticated)
+                HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index");
         }
     }
 }
