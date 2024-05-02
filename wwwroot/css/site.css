@@ -13,14 +13,30 @@ html {
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+    
 }
 
 body {
   margin-bottom: 60px;
+  background-color: #DDE6ED;
 }
 
 header {
     background-color: #3E5363;
+}
+
+.signInButton {
+    background-color: #9DB2BF;
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+    background-color: #D4DFE7;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+input.form-control {
+    background-color: #DDE6ED;
 }
