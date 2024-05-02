@@ -1,9 +1,36 @@
-﻿@model QuestionnaireApp.Models.Survey
+﻿@model List<QuestionnaireApp.Models.Survey>
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+@if(User.Identity.IsAuthenticated)
+{
+    @foreach (var survey in Model)
+    {
+        <li>@survey.Title</li>
+        <ul>
+            @foreach (var question in survey.Questions)
+            {
+                <li>@question</li>
+            }
+        </ul>
+    }
+    <br />
+    @foreach (var survey in Model)
+    {
+        <div class="survey">
+            <h3>@survey.Title</h3>
+            <form asp-controller="Survey" asp-action="Submit" method="post">
+                <input type="hidden" name="SurveyId" value="" />
+                <ul>
+                    @foreach (var question in survey.Questions)
+                    {
+                        <li>@question</li>
+                    }
+                </ul>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    }
+}

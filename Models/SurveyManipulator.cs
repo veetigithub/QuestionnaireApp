@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace QuestionnaireApp.Models
 {
@@ -42,6 +43,11 @@ namespace QuestionnaireApp.Models
             }
 
             return survey;
+        }
+        public List<T> GetAllSurveys<T>(string table)
+        {
+            var collection = _connection.GetCollection<T>(table);
+            return collection.Find(new BsonDocument()).ToList();
         }
     }
 }
