@@ -30,10 +30,11 @@ namespace QuestionnaireApp.Controllers
                     Email = model.Email,
                     Password = model.Password
                 };
+                Console.WriteLine("sheesh");
                 _register.RegisterUser(user);
                 return View(model);
             }
-
+            Console.WriteLine("sheeshssssssssssdsds");
             // If model state is not valid, return to the registration form with validation errors
             return View(model);
         }

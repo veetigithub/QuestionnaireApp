@@ -10,6 +10,7 @@ builder.Services.AddControllersWithViews();
 // Add MongoDB connection
 builder.Services.AddSingleton<DatabaseConnection>();
 builder.Services.AddSingleton<Register>();
+builder.Services.AddSingleton<SurveyManipulator>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

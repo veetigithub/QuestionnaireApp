@@ -33,7 +33,6 @@ namespace QuestionnaireApp.Models
                     else
                     {
                         collection.InsertOne(record);
-                        return record;
                     }
                 }
             }

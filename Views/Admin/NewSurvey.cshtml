@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Create new survey";
+}
+
+
+<div id="form-container">
+    <h2>Create Survey</h2>
+    <form id="survey-form" asp-controller="Admin" asp-action="NewSurvey" method="post">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="Title">
+        </div>
+        <div id="questions-container">
+            <!-- Dynamic questions will be added here -->
+        </div>
+        <button type="button" id="add-question-btn">Add Question</button>
+        <button type="button" id="submit-survey-btn">Submit Survey</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        
+        const form = document.getElementById("survey-form");
+        const questionsContainer = document.getElementById("questions-container");
+        const addQuestionBtn = document.getElementById("add-question-btn");
+        const submitSurveyBtn = document.getElementById("submit-survey-btn");
+        let questionCount = 0;
+
+        addQuestionBtn.addEventListener("click", function () {
+            questionCount++;
+
+            const newQuestionGroup = document.createElement("div");
+            newQuestionGroup.classList.add("form-group");
+            newQuestionGroup.innerHTML = `
+                            <label for="question-${questionCount}">Question ${questionCount}</label>
+                            <input type="text" id="question-${questionCount}" name="Questions" class="form-control">
+                        `;
+
+            questionsContainer.appendChild(newQuestionGroup);
+        });
+        submitSurveyBtn.addEventListener("click", function () {
+            
+            // Process form submission logic here
+            const formData = new FormData(form);
+            for (const [key, value] of formData.entries()) {
+                console.log(`${key}: ${value}`);
+            }
+            event.preventDefault();
+            form.submit();
+        });
+    });
+</script>
