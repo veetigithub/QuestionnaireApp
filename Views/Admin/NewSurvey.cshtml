@@ -3,19 +3,27 @@
 }
 
 
-<div id="form-container">
-    <h2>Create Survey</h2>
-    <form id="survey-form" asp-controller="Admin" asp-action="NewSurvey" method="post">
-        <div class="mb-3">
-            <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="title" name="Title">
-        </div>
-        <div id="questions-container">
-            <!-- Dynamic questions will be added here -->
-        </div>
-        <button type="button" id="add-question-btn">Add Question</button>
-        <button type="button" id="submit-survey-btn">Submit Survey</button>
-    </form>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card" style="border-radius: 10px;">
+                <div class="card-body p-md-5">
+                    <h2>Create Survey</h2>
+                    <form id="survey-form" asp-controller="Admin" asp-action="NewSurvey" method="post">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="title" name="Title">
+                        </div>
+                        <div id="questions-container">
+                            <!-- dynamic questions will be added here . . . -->
+                        </div>
+                        <button type="button" id="add-question-btn">Add Question</button>
+                        <button type="button" id="submit-survey-btn">Submit Survey</button>
+                    </form>
+                </div>
+            </div>
+         </div>
+    </div>
 </div>
 
 <script>

@@ -17,20 +17,37 @@
         </ul>
     }
     <br />
+    
+
     @foreach (var survey in Model)
     {
-        <div class="survey">
-            <h3>@survey.Title</h3>
-            <form asp-controller="Survey" asp-action="Submit" method="post">
-                <input type="hidden" name="SurveyId" value="" />
-                <ul>
-                    @foreach (var question in survey.Questions)
-                    {
-                        <li>@question</li>
-                    }
-                </ul>
-                <button type="submit">Submit</button>
-            </form>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="card" style="border-radius: 10px;">
+                        <div class="card-body p-md-5">
+                            <div class="survey">
+                                <h3>@survey.Title</h3>
+                                <form asp-controller="Survey" asp-action="Submit" method="post">
+                                    <input type="hidden" name="SurveyId" value="" />
+                                        @foreach (var question in survey.Questions)
+                                        {
+                                            <h4>@question</h4>
+                                            <input type="text" class="form-control" />
+                                        }
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit" class="btn btn-primary signInButton" style="border-radius: 10px;">Finish</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     }
+                     
+}else
+{
+    <h1>You have to login!</h1>
 }
