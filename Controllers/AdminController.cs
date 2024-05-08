@@ -31,6 +31,7 @@ namespace QuestionnaireApp.Controllers
             var survey = new Survey()
             {
                 Title = model.Title,
+                Description = model.Description,
                 Questions = model.Questions
             };
             // Here you can save the survey data to the database or perform other operations

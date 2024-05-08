@@ -28,11 +28,12 @@
                         <div class="card-body p-md-5">
                             <div class="survey">
                                 <h3>@survey.Title</h3>
+                                <h6>@survey.Description</h6>
                                 <form asp-controller="Survey" asp-action="Submit" method="post">
                                     <input type="hidden" name="SurveyId" value="" />
                                         @foreach (var question in survey.Questions)
                                         {
-                                            <h4>@question</h4>
+                                            <p>@question</p>
                                             <input type="text" class="form-control" />
                                         }
                                     <div class="d-flex justify-content-center">
@@ -51,3 +52,5 @@
 {
     <h1>You have to login!</h1>
 }
+
+<!---->
