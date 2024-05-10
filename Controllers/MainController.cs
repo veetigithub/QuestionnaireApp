@@ -26,5 +26,18 @@ namespace QuestionnaireApp.Controllers
             }
             return View();
         }
+
+        [HttpGet]
+        [HttpPost]
+        public IActionResult Survey()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var allSurveys = _surveyManipulator.GetAllSurveys<Survey>("Survey");
+                Console.WriteLine(allSurveys);
+                return View(allSurveys);
+            }
+            return View();
+        }
     }
 }

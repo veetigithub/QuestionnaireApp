@@ -51,4 +51,8 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.MapControllerRoute(
+    name: "surveyView",
+    pattern: "{controller=Main}/{action=Survey}/{id?}");
+
 app.Run();
