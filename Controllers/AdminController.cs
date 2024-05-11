@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using QuestionnaireApp.Models;
 
 namespace QuestionnaireApp.Controllers
@@ -18,7 +19,7 @@ namespace QuestionnaireApp.Controllers
         {
             return View();
         }
-
+        [Authorize(Policy = "OnlyAdminAccess")]
         public IActionResult NewSurvey()
         {
             return View();

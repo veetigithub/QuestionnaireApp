@@ -1,70 +1,38 @@
-﻿@model List<QuestionnaireApp.Models.Survey>
+﻿@model QuestionnaireApp.Models.Survey
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = Model.Title;
 }
 
-
-@if(User.Identity.IsAuthenticated)
+@if (User.Identity.IsAuthenticated)
 {
-    @* @foreach (var survey in Model)
-    {
-        <div class="container mt-5">
-            <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <div class="card" style="border-radius: 10px;">
-                        <div class="card-body p-md-5">
-                            <div class="survey">
-                                <h3>@survey.Title</h3>
-                                <h6>@survey.Description</h6>
-                                <form asp-controller="Survey" asp-action="Submit" method="post">
-                                    <input type="hidden" name="SurveyId" value="" />
-                                        @foreach (var question in survey.Questions)
-                                        {
-                                            <p>@question</p>
-                                            <input type="text" class="form-control" />
-                                        }
-                                    <div class="d-flex justify-content-center">
-                                        <button type="submit" class="btn btn-primary signInButton" style="border-radius: 10px;">Finish</button>
-                                    </div>
-                                </form>
-                            </div>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card" style="border-radius: 10px;">
+                    <div class="card-body p-md-5">
+                        <div class="survey">
+                            <h3>@Model.Title</h3>
+                            <h6>@Model.Description</h6>
+                            <form asp-controller="Survey" asp-action="Submit" method="post">
+                                <input type="hidden" name="SurveyId" value="" />
+                                @foreach (var question in Model.Questions)
+                                {
+                                    <p>@question</p>
+                                    <input type="text" class="form-control" />
+                                }
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-primary signInButton" style="border-radius: 10px;">Finish</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    } *@
-
-    <div class="container mt-5">
-        <!-- Loop through surveys in sets of three -->
-        @for (int i = 0; i < Model.Count; i += 3)
-        {
-            <!-- Start a new row for every set -->
-            <div class="row">
-                <!-- Loop through each survey in the current set -->
-                @for (int j = i; j < Math.Min(i + 3, Model.Count); j++)
-                {
-                    <!-- Create a column for the current survey -->
-                    <div class="col-md-4">
-                        <!-- Card for the survey -->
-                        <div class="card mb-4" style="border-radius: 10px;">
-                            <div class="card-body p-md-5">
-                                <h3 class="card-title">@Model[j].Title</h3>
-                                <p class="card-text">@Model[j].Description</p>
-                                <div class="d-flex justify-content-center">
-                                    <a href="@Url.Action("Submit", "Survey", new { id = Model[j]._id })" class="btn btn-primary signInButton" style="border-radius: 10px;">Answer Survey</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                }
-            </div>
-        }
     </div>
 
-
-                     
-}else
+}
+else
 {
     <h1>YoU hAvE tO lOgIn!?</h1>
 }

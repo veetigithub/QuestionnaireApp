@@ -21,6 +21,10 @@ namespace QuestionnaireApp.Models
 
                 if (title != null)
                 {
+                    // testers
+                    Console.WriteLine(title.GetValue(survey));
+                    Console.WriteLine(survey);
+                    Console.WriteLine(title);
                     var titleValue = title.GetValue(survey);
 
                     var filter = Builders<T>.Filter.Eq("Title", titleValue);
@@ -48,6 +52,14 @@ namespace QuestionnaireApp.Models
         {
             var collection = _connection.GetCollection<T>(table);
             return collection.Find(new BsonDocument()).ToList();
+        }
+
+        public Survey GetByObjectId(ObjectId id) 
+        {
+            var collection = _connection.GetCollection<Survey>("Survey");
+            var filter = Builders<Survey>.Filter.Eq("_id", id);
+            var result = collection.Find(filter).FirstOrDefault();
+            return result;
         }
     }
 }

@@ -52,7 +52,7 @@
                                 <h3 class="card-title">@Model[j].Title</h3>
                                 <p class="card-text">@Model[j].Description</p>
                                 <div class="d-flex justify-content-center">
-                                    <a href="@Url.Action("Submit", "Survey", new { id = Model[j]._id })" class="btn btn-primary signInButton" style="border-radius: 10px;">Answer Survey</a>
+                                    <a href="@Url.Action("Survey", "Main", new { id = Model[j]._id })" class="btn btn-primary signInButton" style="border-radius: 10px;">Answer Survey</a>
                                 </div>
                             </div>
                         </div>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using QuestionnaireApp.Models;
 
 namespace QuestionnaireApp.Controllers
@@ -29,15 +30,22 @@ namespace QuestionnaireApp.Controllers
 
         [HttpGet]
         [HttpPost]
-        public IActionResult Survey()
+        public IActionResult Survey(string id)
         {
             if (User.Identity.IsAuthenticated)
             {
-                var allSurveys = _surveyManipulator.GetAllSurveys<Survey>("Survey");
-                Console.WriteLine(allSurveys);
-                return View(allSurveys);
+                if (!string.IsNullOrEmpty(id) && ObjectId.TryParse(id, out ObjectId objectId))
+                {
+                    var surveyById = _surveyManipulator.GetByObjectId(objectId);
+                    if (surveyById != null)
+                    {
+                        return View(surveyById);
+                    }
+                }
+                // If the id is not valid or the survey is not found, handle accordingly
+                return RedirectToAction("Index", "Main"); // Redirect to a default action
             }
-            return View();
+            return RedirectToAction("Login", "Main"); // Redirect to login page if not authenticated
         }
     }
 }

@@ -72,10 +72,10 @@ namespace QuestionnaireApp.Controllers
             var claims = new List<Claim> {
                 new Claim(ClaimTypes.Name, username)
             };
-            //if (name == "admin")
-            //{
-            //    claims.Add(new Claim(ClaimTypes.Role, "admin"));
-            //}
+            if (username == "admin")
+            {
+                claims.Add(new Claim(ClaimTypes.Role, "admin"));
+            }
             var claimsIdentity = new ClaimsIdentity(
                 claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
