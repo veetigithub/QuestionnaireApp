@@ -45,7 +45,7 @@ namespace QuestionnaireApp.Controllers
                 // If the id is not valid or the survey is not found, handle accordingly
                 return RedirectToAction("Index", "Main"); // Redirect to a default action
             }
-            return RedirectToAction("Login", "Main"); // Redirect to login page if not authenticated
+            return RedirectToAction("Index", "Login"); // Redirect to login page if not authenticated
         }
     }
 }

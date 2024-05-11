@@ -4,6 +4,7 @@ using QuestionnaireApp.Models;
 
 namespace QuestionnaireApp.Controllers
 {
+    [Authorize(Policy = "OnlyAdminAccess")]
     public class AdminController : Controller
     {
         // Instance of the SurveyManipulator class
@@ -19,12 +20,11 @@ namespace QuestionnaireApp.Controllers
         {
             return View();
         }
-        [Authorize(Policy = "OnlyAdminAccess")]
+        
         public IActionResult NewSurvey()
         {
             return View();
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult NewSurvey(Survey model)
