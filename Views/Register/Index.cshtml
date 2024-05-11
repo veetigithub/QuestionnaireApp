@@ -3,10 +3,8 @@
     ViewData["Title"] = "Register";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<br />
+<br />
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -31,6 +29,10 @@
                             <input asp-for="Password" class="form-control" aria-describedby="passwordHelp" />
                             <div id="passwordHelp" class="form-text">Your password must be 8-20 characters long.</div>
                             <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 d-flex justify-content-center">
+                            <label class="form-label" for="linkToLogin">Don't have an account? </label>
+                            <a class="linkToLogin" asp-area="" asp-controller="Login" asp-action="Index" style="color: #2B80FF">Login</a>
                         </div>
                         <div class="d-flex justify-content-center">
                             <button type="submit" class="btn btn-primary signInButton" style="border-radius: 10px;">Register</button>

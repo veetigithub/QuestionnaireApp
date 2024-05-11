@@ -2,11 +2,8 @@
     ViewData["Title"] = "Login";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-
+<br />
+<br />
 
 @if (User.Identity.IsAuthenticated)
 {
@@ -32,9 +29,9 @@
                                 <input type="password" class="form-control" id="password" name="Password" aria-describedby="passwordHelp">
                                 <div id="passwordHelp" class="form-text">Your password must be 8-20 characters long.</div>
                             </div>
-                            <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="rememberCheck">
-                                <label class="form-check-label" for="rememberCheck">Remember me</label>
+                            <div class="mb-3 d-flex justify-content-center">
+                                <label class="form-label" for="linkToRegister">Don't have an account? </label>
+                                <a class="linkToRegister" asp-area="" asp-controller="Register" asp-action="Index" style="color: #2B80FF">Register</a>
                             </div>
                             <div class="d-flex justify-content-center">
                                 <button type="submit" class="btn btn-primary signInButton" style="border-radius: 10px;">Login</button>
