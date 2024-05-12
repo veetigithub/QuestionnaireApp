@@ -81,8 +81,8 @@ namespace QuestionnaireApp.Models
         public List<AnsweredSurvey> GetAnsweredSurveys()
         {
             var collection = _connection.GetCollection<AnsweredSurvey>("AnsweredSurveys");
-            var answeredSurveys = collection.Find(new BsonDocument()).ToList();
-            return answeredSurveys;
+            return collection.Find(_ => true).ToList();
         }
     }
 }
+

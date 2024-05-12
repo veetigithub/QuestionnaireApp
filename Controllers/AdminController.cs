@@ -47,7 +47,13 @@ namespace QuestionnaireApp.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 var answeredSurveys = _surveyManipulator.GetAnsweredSurveys();
-                return View(answeredSurveys);
+                var surveysWithAnswers = new List<(AnsweredSurvey, Survey)>();
+                foreach (var answeredSurvey in answeredSurveys)
+                {
+                    var survey = _surveyManipulator.GetByObjectId(answeredSurvey.SurveyId);
+                    surveysWithAnswers.Add((answeredSurvey, survey));
+                }
+                return View(surveysWithAnswers);
             }
             return RedirectToAction("Index", "Login"); // Redirect to login page if not authenticated
         }
