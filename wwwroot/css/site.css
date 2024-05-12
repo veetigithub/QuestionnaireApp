@@ -40,3 +40,16 @@ header {
 input.form-control {
     background-color: #DDE6ED;
 }
+
+.left-header {
+    background-color: #D4DFE7; /* Background color */
+    color: black; /* Text color */
+    padding: 20px; /* Padding for content */
+    width: 16rem; /* Set a fixed width or use percentage */
+    position: fixed; /* Fixed positioning so it remains on the left side */
+    top: 62px; /* Align to the top of the viewport */
+    left: 0; /* Align to the left side of the viewport */
+    height: 100%; /* Full height of the viewport */
+    overflow-y: auto; /* Enable vertical scroll if content overflows */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for visual effect */
+}
