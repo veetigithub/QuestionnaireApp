@@ -41,5 +41,15 @@ namespace QuestionnaireApp.Controllers
             _surveyManipulator.CreateSurvey(survey);
             return View(model);
         }
+
+        public IActionResult AnsweredSurveys()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var answeredSurveys = _surveyManipulator.GetAnsweredSurveys();
+                return View(answeredSurveys);
+            }
+            return RedirectToAction("Index", "Login"); // Redirect to login page if not authenticated
+        }
     }
 }

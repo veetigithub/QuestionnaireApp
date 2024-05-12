@@ -32,7 +32,7 @@ header {
     border-color: rgba(0, 0, 0, 0.15);
 }
 
-.card-body {
+.card {
     background-color: #D4DFE7;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
 }
