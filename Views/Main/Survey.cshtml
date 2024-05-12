@@ -13,12 +13,14 @@
                         <div class="survey">
                             <h3>@Model.Title</h3>
                             <h6>@Model.Description</h6>
-                            <form asp-controller="Survey" asp-action="Submit" method="post">
-                                <input type="hidden" name="SurveyId" value="" />
-                                @foreach (var question in Model.Questions)
+                            <form asp-controller="Main" asp-action="Submit" method="post">
+                                <input type="hidden" name="UserId" value="@User.Identity.Name" />
+                                <input type="hidden" name="SurveyId" value="@Model._id" />
+                                @for (var i = 0; i < Model.Questions.Count; i++)
                                 {
-                                    <p>@question</p>
-                                    <input type="text" class="form-control" />
+                                    <p>@Model.Questions[i]</p>
+                                    <input type="text" class="form-control" name="userAnswers[@i]" />
+                                    <!-- The name attribute here is "UserAnswers[i]", where i corresponds to the index of the question -->
                                 }
                                 <br />
                                 <div class="d-flex justify-content-center">
